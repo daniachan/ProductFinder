@@ -164,15 +164,15 @@ class SearchFragment : Fragment(), Injectable {
         val query = binding.searchEditText.text.toString()
         // Dismiss keyboard
         dismissKeyboard(v.windowToken)
-        if (query.isEmpty()) {
-            binding.countProductTextView.isGone = true
-            binding.recordList.isGone = false
-            binding.productList.isGone  = true
-            binding.deleteAllButton.isGone = false
-            binding.backArrow.isGone = false
-        } else {
-            binding.countProductTextView.isGone = false
-            binding.deleteAllButton.isGone = true
+
+        val isEmptyQuery = query.isEmpty()
+        binding.countProductTextView.isGone = isEmptyQuery
+        binding.recordList.isGone = !isEmptyQuery
+        binding.productList.isGone  = isEmptyQuery
+        binding.deleteAllButton.isGone = !isEmptyQuery
+        binding.backArrow.isGone = !isEmptyQuery
+
+        if (!query.isEmpty()) {
             searchViewModel.setQuery(query)
         }
 

@@ -36,7 +36,6 @@ class ProductListAdapter (
                 false,
                 dataBindingComponent
         )
-        //binding.showFullName = showFullNames
         binding.root.setOnClickListener {
             binding.plpRecod?.let {
                 repoClickCallback?.invoke(it)
